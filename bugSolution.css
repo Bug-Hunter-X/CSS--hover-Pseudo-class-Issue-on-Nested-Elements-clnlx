@@ -1,0 +1,16 @@
+The issue was likely caused by a specificity conflict, where another style rule with higher specificity was overriding the hover style.  Consider these solutions:
+
+1. **Increase Specificity:**  Increase the specificity of the hover selector to override conflicting styles. For example, if the `outer` div has an ID, use that to make the selector more specific:
+```css
+#outer:hover .inner {
+  background-color: yellow;
+}
+```
+2. **!important:** As a last resort, you can use `!important` to force the style.  However, overuse of `!important` is generally discouraged as it can make CSS harder to maintain.
+```css
+.outer:hover .inner {
+  background-color: yellow !important;
+}
+```
+3. **Check for conflicting styles:** Ensure no other styles are unintentionally affecting the `.inner` element.  Use your browser's developer tools to inspect the element and check the applied styles to identify conflicting styles. 
+4. **Proper Nesting:** Make sure the elements are nested correctly within the HTML structure, this can impact how selectors are interpreted.
